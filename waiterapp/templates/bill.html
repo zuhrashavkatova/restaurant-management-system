@@ -1,0 +1,107 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bill</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-10 bg-gray-100">
+  <div class="max-w-3xl mx-auto bg-white p-8 shadow rounded">
+    <h1 class="text-2xl font-bold mb-4">Bill for Table {{ reservation.table_number }}</h1>
+
+    <table class="w-full mb-6">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="text-left p-3">Meal</th>
+          <th class="text-left p-3">Quantity</th>
+          <th class="text-left p-3">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr class="border-t">
+          <td class="p-3">{{ order.menu_item.name }}</td>
+          <td class="p-3">{{ order.quantity }}</td>
+          <td class="p-3">${{ order.get_price }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="text-right">
+      <p>Subtotal: <strong>${{ subtotal }}</strong></p>
+      <p>Service Charge (15%): <strong>${{ service_charge }}</strong></p>
+      <p class="text-xl mt-2">Total: <strong>${{ total }}</strong></p>
+    </div>
+
+    <form method="post" action="{% url 'mark_done' reservation.id %}" class="text-right mt-6">
+      {% csrf_token %}
+      <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+        ✅ Done
+      </button>
+    </form>
+  </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bill</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('https://i.pinimg.com/736x/8c/5e/7d/8c5e7d05c3b74355873246961b229032.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .bg-overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="p-10 min-h-screen flex items-center justify-center">
+
+  <div class="max-w-3xl w-full bg-overlay p-10 shadow-2xl rounded-2xl">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-3">🧾 Bill for Table {{ reservation.table_number }}</h1>
+
+    <table class="w-full mb-6 text-gray-700">
+      <thead class="bg-gray-200 rounded">
+        <tr>
+          <th class="text-left p-3">Meal</th>
+          <th class="text-left p-3">Quantity</th>
+          <th class="text-left p-3">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr class="border-t border-gray-300 hover:bg-gray-50">
+          <td class="p-3 font-medium">{{ order.menu_item.name }}</td>
+          <td class="p-3">{{ order.quantity }}</td>
+          <td class="p-3">${{ order.get_price }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="text-right text-gray-800">
+      <p class="mb-1">Subtotal: <strong>${{ subtotal }}</strong></p>
+      <p class="mb-1">Service Charge (15%): <strong>${{ service_charge }}</strong></p>
+      <p class="text-2xl font-semibold mt-3 border-t pt-3">Total: <span class="text-green-600">${{ total }}</span></p>
+    </div>
+
+    <form method="post" action="{% url 'mark_done' reservation.id %}" class="text-right mt-6">
+      {% csrf_token %}
+      <button type="submit" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow hover:from-green-600 hover:to-green-700 transition-all">
+        ✅ Mark as Done
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>

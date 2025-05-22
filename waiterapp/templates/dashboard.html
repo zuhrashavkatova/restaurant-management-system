@@ -1,0 +1,205 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-10 bg-gray-100">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Welcome, {{ request.user.username }}</h1>
+
+    <a href="{% url 'create_reservation' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">+ New Reservation</a>
+
+    <h2 class="text-xl font-semibold mt-8 mb-4">Your Reservations</h2>
+    <table class="w-full bg-white shadow rounded overflow-hidden">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="text-left p-3">Table</th>
+          <th class="text-left p-3">Reserved At</th>
+          <th class="text-left p-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in reservations %}
+        <tr class="border-t">
+          <td class="p-3">{{ r.table_number }}</td>
+          <td class="p-3">{{ r.reserved_at }}</td>
+          <td class="p-3">
+            <a href="{% url 'order_detail' r.id %}" class="text-blue-600 hover:underline">Manage Orders</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-10 bg-gray-100">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Welcome, {{ request.user.username }}</h1>
+
+    <a href="{% url 'create_reservation' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">+ New Reservation</a>
+
+    <h2 class="text-xl font-semibold mt-8 mb-4">Your Reservations</h2>
+    <table class="w-full bg-white shadow rounded overflow-hidden mb-8">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="text-left p-3">Table</th>
+          <th class="text-left p-3">Reserved At</th>
+          <th class="text-left p-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in reservations %}
+        <tr class="border-t">
+          <td class="p-3">{{ r.table_number }}</td>
+          <td class="p-3">{{ r.reserved_at }}</td>
+          <td class="p-3">
+            <a href="{% url 'order_view' r.id %}" class="text-blue-600 hover:underline">Manage Orders</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2 class="text-xl font-semibold mt-8 mb-4">Table Status</h2>
+    <table class="w-full bg-white shadow rounded overflow-hidden">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="text-left p-3">Table</th>
+          <th class="text-left p-3">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for table in total_tables %}
+        <tr class="border-t">
+          <td class="p-3">{{ table.number }}</td>
+          <td class="p-3">
+            {% if table.number in reserved_tables %}
+            <span class="text-red-600">Reserved</span>
+            {% else %}
+            <span class="text-green-600">Available</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+
+
+
+
+ -->
+
+
+
+ {% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>Dashboard</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+ 
+   <style>
+     body {
+       font-family: 'Poppins', sans-serif;
+       background-image: url("https://i.pinimg.com/736x/15/1a/2e/151a2ee727935d4e039050d4fb7fa513.jpg");
+       background-size: cover;
+       background-position: center;
+       background-attachment: fixed;
+     }
+     .bg-overlay {
+       background-color: rgba(255, 255, 255, 0.85);
+       backdrop-filter: blur(5px);
+     }
+   </style>
+ </head>
+
+ <body class="p-10">
+   <div class="max-w-5xl mx-auto bg-overlay rounded-xl shadow-xl p-10">
+ 
+     <!-- Header -->
+     <!-- <h1 class="text-4xl font-bold text-gray-800 mb-6">👋 Welcome, {{ request.user.username }}</h1> -->
+     <h1 class="text-4xl font-bold text-gray-800 mb-6">👋 Welcome, ZUHRA</h1>
+     <!-- Buttons -->
+     <div class="flex flex-wrap gap-4 mb-6">
+       <a href="{% url 'create_reservation' %}" class="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition duration-300 shadow">
+         ➕ New Reservation
+       </a>
+ 
+       <a href="{% url 'table_status' %}" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 shadow">
+         📊 Table Status
+       </a>
+     </div>
+ 
+     <!-- Reservations Table
+     <h2 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">📅 Your Reservations</h2>
+     <div class="overflow-x-auto">
+       <table class="min-w-full bg-white rounded-xl overflow-hidden shadow-lg">
+         <thead class="bg-blue-600 text-white">
+           <tr>
+             <th class="text-left px-6 py-4">Table</th>
+             <th class="text-left px-6 py-4">Reserved At</th>
+             <th class="text-left px-6 py-4">Actions</th>
+           </tr>
+         </thead>
+         <tbody class="text-gray-700">
+           {% for r in reservations %}
+           <tr class="border-t hover:bg-gray-50">
+             <td class="px-6 py-4">{{ r.table_number }}</td>
+             <td class="px-6 py-4">{{ r.reserved_at }}</td>
+             <td class="px-6 py-4">
+               <a href="{% url 'order_detail' r.id %}" class="text-blue-600 hover:underline font-medium">Manage Orders</a>
+             </td>
+           </tr>
+           {% empty %}
+           <tr>
+             <td colspan="3" class="px-6 py-4 text-center text-gray-500">No reservations found.</td>
+           </tr>
+           {% endfor %}
+         </tbody>
+       </table>
+     </div>
+      -->
+    <!-- New Styled Reservations List Section -->
+<h2 class="text-2xl font-semibold text-gray-800 mt-8 mb-6">📅 Your Reservations</h2>
+
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  {% for r in reservations %}
+  <div class="bg-white p-6 rounded-xl shadow-md border hover:shadow-xl transition duration-300">
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="text-xl font-semibold text-green-700">Table #{{ r.table_number }}</h3>
+      <span class="text-sm text-gray-500">{{ r.reserved_at|date:"M d, Y - H:i" }}</span>
+    </div>
+    <p class="text-gray-700 mb-4">Reservation made for this table at the specified date and time.</p>
+    <a href="{% url 'order_detail' r.id %}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+      📝 Manage Orders
+    </a>
+  </div>
+  {% empty %}
+  <div class="text-gray-600 text-center col-span-full">
+    You have no current reservations. Start by making one!
+  </div>
+  {% endfor %}
+  </div>
+   </div>
+ </body>
+ </html>
+ 

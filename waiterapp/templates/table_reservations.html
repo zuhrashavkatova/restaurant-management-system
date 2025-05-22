@@ -1,0 +1,76 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Reservations for Table {{ table_number }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-8 bg-gray-100">
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-semibold mb-4">Reservations for Table {{ table_number }}</h2>
+
+    {% if reservations %}
+      <ul>
+        {% for r in reservations %}
+          <li class="mb-2">
+            <strong>Waiter:</strong> {{ r.waiter.first_name }} {{ r.waiter.last_name }}<br>
+            <strong>Reserved at:</strong> {{ r.reserved_at }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No reservations found.</p>
+    {% endif %}
+
+    <a href="{% url 'table_status' %}" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded">🔙 Back to Table Status</a>
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reservations for Table {{ table_number }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-8">
+
+  <div class="overlay max-w-3xl w-full p-8 rounded-2xl shadow-2xl">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+      📋 Reservations for Table {{ table_number }}
+    </h2>
+
+    {% if reservations %}
+      <div class="space-y-4">
+        {% for r in reservations %}
+          <div class="bg-white border-l-4 border-blue-500 p-4 rounded shadow hover:shadow-lg transition duration-300">
+            <p class="text-gray-700"><strong>👨‍🍳 Waiter:</strong> {{ r.waiter.first_name }} {{ r.waiter.last_name }}</p>
+            <p class="text-gray-700"><strong>🕒 Reserved at:</strong> {{ r.reserved_at|date:"H:i, d M Y" }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-gray-600 text-center mt-4">No reservations found.</p>
+    {% endif %}
+
+    <div class="text-center mt-6">
+      <a href="{% url 'table_status' %}" class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition duration-300">
+        🔙 Back to Table Status
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

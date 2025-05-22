@@ -1,0 +1,465 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h1 class="text-xl font-bold mb-4 text-center">Create New Reservation</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="number" name="table_number" placeholder="Table Number" class="w-full p-3 mb-4 border rounded" required>
+      <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Create</button>
+    </form>
+  </div>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md mb-10">
+    <h1 class="text-xl font-bold mb-4 text-center">Create New Reservation</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="number" name="table_number" placeholder="Table Number" class="w-full p-3 mb-4 border rounded" required>
+      <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Create</button>
+    </form>
+  </div>
+
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-2xl">
+    <h2 class="text-lg font-semibold mb-4 text-center">Table Status</h2>
+    <div class="grid grid-cols-4 gap-4">
+      {% for i in total_tables %}
+        {% if i in reserved_tables %}
+          <div class="bg-red-200 text-red-800 p-4 rounded shadow text-center">
+            Table {{ i }}<br>✅ Reserved
+          </div>
+        {% else %}
+          <div class="bg-green-200 text-green-800 p-4 rounded shadow text-center">
+            Table {{ i }}<br>❎ Free
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h1 class="text-xl font-bold mb-4 text-center">Create New Reservation</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="number" name="table_number" placeholder="Table Number" class="w-full p-3 mb-4 border rounded" required>
+      
+      <label for="waiter_id" class="block text-gray-700 mt-4">Choose Waiter</label>
+      <select name="waiter_id" class="w-full p-3 mb-4 border rounded" required>
+        {% for waiter in waiters %}
+          <option value="{{ waiter.id }}">{{ waiter.first_name }} {{ waiter.last_name }}</option>
+        {% endfor %}
+      </select>
+
+      <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Create</button>
+    </form>
+  </div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+
+  
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md mb-10">
+    <h1 class="text-xl font-bold mb-4 text-center">Create New Reservation</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="number" name="table_number" placeholder="Table Number" class="w-full p-3 mb-4 border rounded" required>
+      
+      <label for="waiter_id" class="block text-gray-700 mt-4">Choose Waiter</label>
+      <select name="waiter_id" class="w-full p-3 mb-4 border rounded" required>
+        {% for waiter in waiters %}
+          <option value="{{ waiter.id }}">{{ waiter.first_name }} {{ waiter.last_name }}</option>
+        {% endfor %}
+      </select>
+
+      <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Create</button>
+    </form>
+  </div>
+
+  
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-2xl">
+    <h2 class="text-lg font-semibold mb-4 text-center">Table Status</h2>
+    <div class="grid grid-cols-4 gap-4">
+      {% for i in total_tables %}
+        {% if i in reserved_tables %}
+          <div class="bg-red-200 text-red-800 p-4 rounded shadow text-center">
+            Table {{ i }}<br>✅ Reserved
+          </div>
+        {% else %}
+          <div class="bg-green-200 text-green-800 p-4 rounded shadow text-center">
+            Table {{ i }}<br>❎ Free
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+
+  
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md mb-10">
+    <h1 class="text-xl font-bold mb-4 text-center">Create New Reservation</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="number" name="table_number" placeholder="Table Number" class="w-full p-3 mb-4 border rounded" required>
+      
+      <label for="waiter_id" class="block text-gray-700 mt-4">Choose Waiter</label>
+      <select name="waiter_id" class="w-full p-3 mb-4 border rounded" required>
+        {% for waiter in waiters %}
+          <option value="{{ waiter.id }}">{{ waiter.first_name }} {{ waiter.last_name }}</option>
+        {% endfor %}
+      </select>
+
+      <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Create</button>
+    </form>
+  </div>
+
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-2xl">
+    <h2 class="text-lg font-semibold mb-4 text-center">Table Status</h2>
+    <div class="grid grid-cols-4 gap-4">
+      {% for i in total_tables %}
+        {% if i in reserved_tables %}
+          {% with res=reserved_tables.i %}
+            <a href="{% url 'order_detail' res.id %}">
+              <div class="bg-red-200 text-red-800 p-4 rounded shadow text-center hover:bg-red-300">
+                <p>Table {{ i }}</p>
+                <p>👤 {{ res.waiter.first_name }} {{ res.waiter.last_name }}</p>
+                <p>✅ Reserved</p>
+              </div>
+            </a>
+          {% endwith %}
+        {% else %}
+          <div class="bg-green-200 text-green-800 p-4 rounded shadow text-center">
+            Table {{ i }}<br>❎ Free
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+
+  
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md mb-10">
+    <h1 class="text-xl font-bold mb-4 text-center">Create New Reservation</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="table_number">Table Number:</label>
+      <input type="number" name="table_number" required>
+      
+      <label for="waiter_id">Select Waiter:</label>
+      <select name="waiter_id" required>
+        {% for waiter in staff_members %}
+          <option value="{{ waiter.id }}">{{ waiter.first_name }} {{ waiter.last_name }}</option>
+        {% endfor %}
+      </select>
+      
+      <button type="submit">Create Reservation</button>
+    </form>
+    
+    
+  </div>
+
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-2xl">
+    <h2 class="text-lg font-semibold mb-4 text-center">Table Status</h2>
+    <div class="grid grid-cols-4 gap-4">
+      {% for i in total_tables %}
+        {% if i in reserved_tables %}
+          {% with res=reserved_tables.i %}
+            <a href="{% url 'order_detail' res.id %}">
+              <div class="bg-red-200 text-red-800 p-4 rounded shadow text-center hover:bg-red-300">
+                <p>Table {{ i }}</p>
+                <p>👤 {{ res.waiter.first_name }} {{ res.waiter.last_name }}</p>
+                <p>✅ Reserved</p>
+              </div>
+            </a>
+          {% endwith %}
+        {% else %}
+         
+            <div class="bg-green-200 text-green-800 p-4 rounded shadow text-center hover:bg-green-300">
+              Table {{ i }}<br>❎ Free
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-lg mb-12">
+    <h1 class="text-2xl font-semibold mb-6 text-center text-gray-700">Create New Reservation</h1>
+    <form method="POST" class="space-y-6">
+      {% csrf_token %}
+      <div class="flex flex-col">
+        <label for="table_number" class="text-lg text-gray-600">Table Number:</label>
+        <input type="number" name="table_number" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <div class="flex flex-col">
+        <label for="waiter_id" class="text-lg text-gray-600">Select Waiter:</label>
+        <select name="waiter_id" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+          {% for waiter in staff_members %}
+            <option value="{{ waiter.id }}">{{ waiter.first_name }} {{ waiter.last_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Create Reservation</button>
+    </form>
+  </div>
+
+ 
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl">
+    <h2 class="text-xl font-semibold mb-6 text-center text-gray-700">Table Status</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {% for i in total_tables %}
+        {% if i in reserved_tables %}
+          {% with res=reserved_tables.i %}
+            <a href="{% url 'order_detail' res.id %}" class="block">
+              <div class="bg-red-200 text-red-800 p-5 rounded-lg shadow hover:bg-red-300 transition duration-300 text-center">
+                <p class="font-semibold">Table {{ i }}</p>
+                <p class="text-sm">👤 {{ res.waiter.first_name }} {{ res.waiter.last_name }}</p>
+                <p class="mt-2 text-lg font-bold">✅ Reserved</p>
+              </div>
+            </a>
+          {% endwith %}
+        {% else %}
+          
+              <p class="font-semibold">Table {{ i }}</p>
+              <p class="mt-2 text-lg font-bold">❎ Free</p>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-lg mb-12">
+    <h1 class="text-2xl font-semibold mb-6 text-center text-gray-700">Create New Reservation</h1>
+    <form method="POST" class="space-y-6">
+      {% csrf_token %}
+      <div class="flex flex-col">
+        <label for="table_number" class="text-lg text-gray-600">Table Number:</label>
+        <input type="number" name="table_number" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <div class="flex flex-col">
+        <label for="waiter_id" class="text-lg text-gray-600">Select Waiter:</label>
+        <select name="waiter_id" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+          {% for waiter in staff_members %}
+            <option value="{{ waiter.id }}">{{ waiter.first_name }} {{ waiter.last_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Create Reservation</button>
+    </form>
+  </div>
+
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl">
+    <h2 class="text-xl font-semibold mb-6 text-center text-gray-700">Table Status</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {% for i in total_tables %}
+        {% if i in reserved_tables %}
+          {% with res=reserved_tables.i %}
+            <a href="{% url 'order_detail' res.id %}" class="block">
+              <div class="bg-red-300 text-red-800 p-6 rounded-lg shadow-lg hover:bg-red-400 transition duration-300 text-center transform hover:scale-105">
+                <p class="font-semibold text-lg">Table {{ i }}</p>
+                <p class="text-sm mt-2">👤 {{ res.waiter.first_name }} {{ res.waiter.last_name }}</p>
+                <p class="mt-2 text-lg font-bold">✅ Reserved</p>
+              </div>
+            </a>
+          {% endwith %}
+        {% else %}
+          
+            <div class="bg-green-300 text-green-800 p-6 rounded-lg shadow-lg hover:bg-green-400 transition duration-300 text-center transform hover:scale-105">
+              <p class="font-semibold text-lg">Table {{ i }}</p>
+              <p class="mt-2 text-lg font-bold">❎ Free</p>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+
+ 
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-lg mb-12">
+    <h1 class="text-2xl font-semibold mb-6 text-center text-gray-700">Create New Reservation</h1>
+    <form method="POST" class="space-y-6">
+      {% csrf_token %}
+      <div class="flex flex-col">
+        <label for="table_number" class="text-lg text-gray-600">Table Number:</label>
+        <input type="number" name="table_number" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <div class="flex flex-col">
+        <label for="waiter_id" class="text-lg text-gray-600">Select Waiter:</label>
+        <select name="waiter_id" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+          {% for waiter in staff_members %}
+            <option value="{{ waiter.id }}">{{ waiter.first_name }} {{ waiter.last_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Create Reservation</button>
+    </form>
+  </div>
+
+  
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Reservation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1470&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .bg-overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 py-12">
+
+  <!-- Reservation Form -->
+  <div class="bg-overlay p-10 rounded-3xl shadow-2xl w-full max-w-xl transition-all">
+    <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">Create New Reservation</h1>
+
+    <form method="POST" class="space-y-6">
+      {% csrf_token %}
+      
+      <!-- Table Number -->
+      <div>
+        <label for="table_number" class="block mb-2 text-gray-700 text-lg font-medium">Table Number:</label>
+        <input type="number" name="table_number" required class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none">
+      </div>
+
+      <!-- Waiter Selection -->
+      <div>
+        <label for="waiter_id" class="block mb-2 text-gray-700 text-lg font-medium">Select Waiter:</label>
+        <select name="waiter_id" required class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none">
+          {% for waiter in staff_members %}
+            <option value="{{ waiter.id }}">{{ waiter.first_name }} {{ waiter.last_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl text-lg font-semibold hover:from-blue-700 hover:to-blue-600 transition duration-300">
+        Create Reservation
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!-- {% load custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Table Status</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center py-10">
+
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-5xl">
+    <h2 class="text-2xl font-semibold mb-6 text-center text-gray-700">Table Status</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        {% for table in total_tables %}
+            {% if table.table_number in reserved_tables %}
+                <a href="{% url 'table_reservations' table.table_number %}">
+                <div class="bg-red-200 text-red-800 p-4 rounded shadow text-center hover:bg-red-300">
+                    <p>Table {{ table.table_number }}</p>
+                    {% with reservation=reserved_tables|get_item:table.table_number|first %}
+                    <p>👤 {{ reservation.waiter.first_name }} {{ reservation.waiter.last_name }}</p>
+                    <p>🕒 {{ reservation.reserved_at|date:"H:i, d M Y" }}</p>
+                    {% endwith %}
+                    <p>✅ Reserved</p>
+                </div>
+                </a>
+            {% else %}
+                <div class="bg-green-200 text-green-800 p-4 rounded shadow text-center hover:bg-green-300">
+                    <p>Table {{ table.table_number }}</p>
+                    <p>❎ Free</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+  </div>
+</body>
+</html> -->
+
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Table Status</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('https://i.pinimg.com/736x/13/43/f9/1343f9a195cbdc2e437c0f833f460866.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center py-12 px-4">
+
+  <div class="overlay p-8 rounded-2xl shadow-2xl w-full max-w-6xl">
+    <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">🪑 Table Status</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      {% for table in total_tables %}
+        {% if table.table_number in reserved_tables %}
+          <a href="{% url 'table_reservations' table.table_number %}">
+            <div class="bg-black text-white p-5 rounded-xl shadow-lg text-center hover:scale-105 transition-transform duration-200">
+              <p class="text-lg font-semibold">Table {{ table.table_number }}</p>
+              {% with reservation=reserved_tables|get_item:table.table_number|first %}
+              <p class="text-sm mt-2">👤 {{ reservation.waiter.first_name }} {{ reservation.waiter.last_name }}</p>
+              <p class="text-sm">🕒 {{ reservation.reserved_at|date:"H:i, d M Y" }}</p>
+              {% endwith %}
+              <p class="mt-3 font-semibold text-green-400">✅ Reserved</p>
+            </div>
+          </a>
+        {% else %}
+          <div class="bg-white text-gray-800 p-5 rounded-xl shadow-lg text-center hover:scale-105 transition-transform duration-200">
+            <p class="text-lg font-semibold">Table {{ table.table_number }}</p>
+            <p class="mt-3 font-semibold text-red-500">❎ Free</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html>
